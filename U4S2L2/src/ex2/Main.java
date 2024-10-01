@@ -24,6 +24,13 @@ public class Main {
         for(int n : reversedList)
             System.out.println(n);
 
+        boolean isEven = Utils.readYN("Vuoi gli indici pari?", s);
+        ArrayList<Integer> list = evenOrOddIndexes(isEven, set);
+
+        System.out.println("Lista degli indici " + (isEven ? "Pari":"Dispari") + ":");
+        for (int n : list)
+            System.out.println(n);
+
         s.close();
     }
     public static TreeSet<Integer> randomNumberSet(int lenght){
@@ -53,6 +60,22 @@ public class Main {
         for (int i = collection.size()-1; i >= 0 ; i--) res.add(col.get(i));
 
         return res;
+    }
+
+    public static ArrayList<Integer> evenOrOddIndexes(boolean evenIndexes, Collection<Integer> collection){
+        List<Integer> col = new ArrayList<>(collection);
+
+        ArrayList<Integer> even = new ArrayList<>();
+        ArrayList<Integer> odd = new ArrayList<>();
+
+        for (int i = 0; i < col.size(); i++)
+            if (i % 2 == 0)
+                even.add(col.get(i));
+            else
+                odd.add(col.get(i));
+
+        return evenIndexes ? even : odd;
+
 
 
     }
